@@ -1,10 +1,19 @@
 class ImagesController < ApplicationController
-  before_action :set_image, except: [:create]
-  
-  def show;end
+  before_action :set_image, except: [:create, :index]
+  def index
+    @images = Image.all
+  end
 
   def create
-
+    @image = Image.new(image_params)
+    respond_to do |format|
+      if @image.save
+        format.html {redirect_to images_path, notice: "Image Successfully Uploaded"}
+      else
+        format.html {render :new }
+        format.json { @image.errors status: :unprocessable_entity}
+      end
+    end
   end
 
   def update
@@ -22,6 +31,6 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:uploaded_image)
+    params.require(:image).permit(:image)
   end
 end

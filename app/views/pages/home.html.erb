@@ -1,15 +1,12 @@
-<div class="h-full w-full bg-blue-50 py-20">
-  <div class="w-full min-w-min h-full bg-gray-800 mx-auto pt-4">
-    <h1 class="text-center text-blue-50"> Upload an image </h1>
-    <%= form_with model: @image, html: { class: "flex flex-col w-full md:w-1/2 mx-auto pt-10", data: { controller: "image-upload-preview" } } do |f| %>
-      <%= f.label :image, class: "text-blue-100 mb-4" %>
-      <%= f.file_field :image, class: "text-blue-100 ring-2 ring-blue-100 rounded-sm py-4 px-2 mb-4 cursor-pointer",
-          data: { action: "input->image-upload-preview#toggleImagePreview", image_upload_preview_target: "fileInput" } %>
-      <div class="bg-gray-500 h-150 w-150 overflow-hidden relative flex items-center justify-center" data-image-upload-preview-target="cropContainer">
-        <img src="" alt="" width="100%" data-image-upload-preview-target="imagePreview"></img>
-        <h2 class="text-blue-50 text-xl absolute"> Preview Image </h2>
-      </div>
-      <%= f.submit "Upload Image", class: "mt-4 w-40 text-blue-50 bg-transparent border-b-2 border-white hover:border-blue-200 transition-colors duration-500 cursor-pointer" %>
-    <% end %>
-  </div>
+<div class="h-screen w-full bg-blue-50 py-20">
+  <h1 class="text-center text-blue-50"> Upload an image </h1>
+  <%= form_with model: @image, html: { class: "bg-gray-900 flex flex-col items-center w-full md:w-3/4 mx-auto pt-10 px-10", data: { controller: "image-upload-preview" }} do |f| %>
+    <%= f.label :image, class: "text-blue-100 mb-4" %>
+    <%= f.file_field :image, direct_upload: true, class: "w-full md:w-2/3 text-blue-100 ring-2 ring-blue-100 rounded-sm py-4 px-2 mb-4 cursor-pointer",
+        data: { action: "input->image-upload-preview#toggleImagePreview", image_upload_preview_target: "fileInput" } %>
+    <div data-image-upload-preview-target="cropContainer">
+    </div>
+    <a href="#" data-action="click->image-upload-preview#saveCrop" class="text-blue-50 px-8 py-1 border-2 border-blue-300 my-4">Save Crop</a>
+    <%= f.submit "Upload Image", class: "mt-4 w-40 text-blue-50 bg-transparent border-b-2 border-white hover:border-blue-200 transition-colors duration-500 cursor-pointer" %>
+  <% end %>
 </div>
