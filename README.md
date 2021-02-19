@@ -1,24 +1,36 @@
-# README
+##### Prerequisites
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The setups steps expect following tools installed on the system.
 
-Things you may want to cover:
+- Github
+- Ruby [3.0.0](https://github.com/yunggindigo/activestorage-client-side-cropping/blob/main/.ruby-version)
+- Rails [6.1.1](https://github.com/yunggindigo/activestorage-client-side-cropping/blob/main/Gemfile)
 
-* Ruby version
+##### 1. Check out the repository
 
-* System dependencies
+```bash
+git clone https://github.com/yunggindigo/activestorage-client-side-cropping.git
+```
 
-* Configuration
+##### 2. Create and setup the database
 
-* Database creation
+Run the following commands to create and setup the database.
 
-* Database initialization
+```ruby
+rails db:create
+```
+##### 3. Create and setup the database
 
-* How to run the test suite
+Install Js dependencies
+```ruby
+yarn install --check-files
+```
+##### 4. Start the Rails server
 
-* Services (job queues, cache servers, search engines, etc.)
+You can start the rails server using the command given below.
 
-* Deployment instructions
+```ruby
+rails s
+```
 
-* ...
+And now you can visit the site with the URL http://localhost:3000
